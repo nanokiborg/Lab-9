@@ -9,26 +9,26 @@
 </head>
 
 <body>
-    <h1>Дневник Разроботчика:</h1>
-    <h3>Добавь свой проект:</h3>
+    <h1>Альмонах Разроботчика:</h1>
+    <h3>Добавь свой репозиторий:</h3>
     <form>
         <div>
+            <label for="proj_name">Название репозиторий</label>
             <input type="text" name="proj_name" id="proj_name">
-            <label for="proj_name">Название проекта</label>
         </div>
         <div>
+            <label for="link">Ссылка на репозиторий</label>
             <input type="text" name="link" id="link">
-            <label for="link">Ссылка</label>
         </div>
         <button onClick="addProject()">Добавить</button>
+        <button onClick="clearProject()">Очистить всё</button>
     </form>
     <ul>
         {% for project in projects_list %}
         <li>
-            <div>
+            <div style="display: flex; gap: 10px;">
                 <div>{{ project['proj_name'] }}</div>
-                <div>{{ project['link'] }}</div>
-                
+                <div><a href="{{  project['link'] }}">{{ project['link'] }} </a></div>
             </div>
         </li>
         {% endfor %}

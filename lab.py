@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-
+# Вариант №8
 
 
 app = Flask('Portfolio dictonary')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///project_dicti.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///project_dict.db'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
@@ -25,6 +25,7 @@ def main():
     return render_template('index1.html', projects_list=projects)
 
 
+# Добавление
 @app.route('/add', methods=['POST'])
 def add_product():
     data = request.json
@@ -38,6 +39,14 @@ def add_product():
     data['id'] = id_new
     projects.append(data)
     return 'OK'
+
+# Удаление
+@app.route('/clear', methods=["POST"])
+def clear_experience():
+    Project.query.delete()
+    db.session.commit()
+    return 'Cleared successfully!'
+
 
 if __name__ == '__main__':
     with app.app_context():
