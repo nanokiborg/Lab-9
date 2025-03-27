@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дневник Разроботчика</title>
+    <script type="text/javascript" src="/static/script.js"></script>
+    <link href="static/font.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Дневник Разроботчика:</h1>
+    <h3>Добавь свой проект:</h3>
+    <form>
+        <div>
+            <input type="text" name="proj_name" id="proj_name">
+            <label for="proj_name">Название проекта</label>
+        </div>
+        <div>
+            <input type="text" name="link" id="link">
+            <label for="link">Ссылка</label>
+        </div>
+        <button onClick="addProject()">Добавить</button>
+    </form>
+    <ul>
+        {% for project in projects_list %}
+        <li>
+            <div>
+                <div>{{ project['proj_name'] }}</div>
+                <div>{{ project['link'] }}</div>
+                
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
